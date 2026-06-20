@@ -1,74 +1,144 @@
 # =========================================================================================
-#                              QUESTIONS 03:- COUNT VOWELS                                    
+#                              QUESTION 03: COUNT VOWELS
 # =========================================================================================
 
+
+VOWELS = "aeiou"
 
 
 # i). USING FOR LOOP
 
-l = "International"
+s = "International"
+count = 0
 
-vowel = 0
+for ch in s:
+    if ch.lower() in VOWELS:
+        count += 1
 
-for ch in l:
-    if ch.lower() in "aeiou":
-        vowel += 1
-
-print(vowel)
-
+print("For loop:", count)
 
 
-# ii). sum() + generator expression (short)
+# ii). USING WHILE LOOP
 
-# 1.
 s = "Hello World"
+count = 0
+i = 0
 
-count = sum(1 for ch in s if ch.lower() in "aeiou")
+while i < len(s):
+    if s[i].lower() in VOWELS:
+        count += 1
+    i += 1
 
-print(count)
-
-# 2. list comprehension
-
-s1 = "internatioonal"
-
-c = sum([1 for ch in s1 if ch.lower() in "aeiou"])
-print(c)
+print("While loop:", count)
 
 
+# iii). USING sum() + GENERATOR EXPRESSION
 
-# iii). LIST COMPTREHENSION
+s = "Programming"
+count = sum(1 for ch in s if ch.lower() in VOWELS)
 
-s2 = "coding"
-
-count_1 = len([i for i in s2 if i.lower() in "aeiou"])
-
-print(count_1)
+print("sum() + generator:", count)
 
 
+# iv). USING LIST COMPREHENSION
 
-# iv). COUNT FREQUENCY OF EACH VOWELS USING DICTIONARY
+s = "coding"
+count = len([ch for ch in s if ch.lower() in VOWELS])
 
-s3 = "cooperation aeronautical"
-
-vowels = {}
-
-for i in s3:
-    if i.lower() in "aeiou":
-        vowels[i] = vowels.get(i, 0) + 1
+print("List comprehension:", count)
 
 
-print(vowels)
+# v). USING filter()
+
+s = "Education"
+count = len(list(filter(lambda ch: ch.lower() in VOWELS, s)))
+
+print("filter():", count)
 
 
+# vi). USING str.count()
 
-# v). RECURSIVE WAY
+s = "cooperation"
+count = 0
 
-def count_vowels(s):
+for vowel in VOWELS:
+    count += s.lower().count(vowel)
+
+print("str.count():", count)
+
+
+# vii). COUNT FREQUENCY OF EACH VOWEL USING DICTIONARY
+
+s = "cooperation aeronautical"
+vowel_count = {}
+
+for ch in s:
+    ch = ch.lower()
+    if ch in VOWELS:
+        vowel_count[ch] = vowel_count.get(ch, 0) + 1
+
+print("Dictionary frequency:", vowel_count)
+
+
+# viii). COUNT FREQUENCY USING collections.Counter
+
+from collections import Counter
+
+s = "beautiful education"
+counter = Counter(ch for ch in s.lower() if ch in VOWELS)
+
+print("Counter frequency:", counter)
+
+
+# ix). USING REGULAR EXPRESSION
+
+import re
+
+s = "International"
+count = len(re.findall(r"[aeiou]", s, re.IGNORECASE))
+
+print("Regex:", count)
+
+
+# x). USING RECURSION
+
+def count_vowels_recursive(s):
     if not s:
         return 0
-    
-    return (s[0].lower() in "aeiou") + count_vowels(s[1:])
+
+    return int(s[0].lower() in VOWELS) + count_vowels_recursive(s[1:])
 
 
-print(count_vowels("frequency"))
+print("Recursion:", count_vowels_recursive("frequency"))
 
+
+# xi). USING A REUSABLE FUNCTION
+
+def count_vowels(s):
+    count = 0
+
+    for ch in s:
+        if ch.lower() in VOWELS:
+            count += 1
+
+    return count
+
+
+print("Function:", count_vowels("Python Practice"))
+
+
+# xii). COUNT VOWELS AND CONSONANTS TOGETHER
+
+s = "International"
+vowels = 0
+consonants = 0
+
+for ch in s:
+    if ch.isalpha():
+        if ch.lower() in VOWELS:
+            vowels += 1
+        else:
+            consonants += 1
+
+print("Vowels:", vowels)
+print("Consonants:", consonants)
