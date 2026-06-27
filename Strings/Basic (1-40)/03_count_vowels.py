@@ -142,3 +142,50 @@ for ch in s:
 
 print("Vowels:", vowels)
 print("Consonants:", consonants)
+
+
+# xiii). FIND POSITIONS OF VOWELS
+
+s = "Education"
+positions = []
+
+for i in range(len(s)):
+    if s[i].lower() in VOWELS:
+        positions.append(i)
+
+print("Vowel positions:", positions)
+
+
+# xiv). STORE ALL VOWELS IN A LIST
+
+s = "Data Science"
+vowel_list = []
+
+for ch in s:
+    if ch.lower() in VOWELS:
+        vowel_list.append(ch)
+
+print("Vowel list:", vowel_list)
+print("Vowel list count:", len(vowel_list))
+
+
+# xv). COUNT VOWELS IN EACH WORD
+
+s = "Python data science"
+word_counts = {}
+
+for word in s.split():
+    word_counts[word] = sum(1 for ch in word if ch.lower() in VOWELS)
+
+print("Each word:", word_counts)
+
+
+# xvi). COUNT VOWELS FROM A LIST OF STRINGS
+
+words = ["python", "pandas", "numpy"]
+total = 0
+
+for word in words:
+    total += sum(1 for ch in word if ch.lower() in VOWELS)
+
+print("List of strings total:", total)

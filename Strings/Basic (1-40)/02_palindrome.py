@@ -148,7 +148,7 @@ c = "A man, a plan, a canal: Panama"
 clean = ""
 
 for ch in c:
-    if c.isalpha():
+    if ch.isalpha():
         clean += ch.lower()
 
 print(clean == clean[::-1])
@@ -166,6 +166,31 @@ for a in var:
         clean_1 += a.lower()
 
 print(clean_1 == clean_1[::-1])
+
+
+
+# xiv). PALINDROME WORDS FROM A SENTENCE
+
+sentence = "madam knows level stats"
+palindrome_words = []
+
+for word in sentence.split():
+    if word == word[::-1]:
+        palindrome_words.append(word)
+
+print(palindrome_words)
+
+
+
+# xv). CHECK LIST OF STRINGS
+
+words = ["madam", "python", "level", "data"]
+result = {}
+
+for word in words:
+    result[word] = word == word[::-1]
+
+print(result)
 
 
 

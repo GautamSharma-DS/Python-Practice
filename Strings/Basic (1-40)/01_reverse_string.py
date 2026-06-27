@@ -51,6 +51,8 @@ s_1 = "Money"
 for m in reversed(s_1):
     print(m, end = "")
 
+print()
+
 
 
 # vi). USING WHILE LOOP
@@ -63,6 +65,8 @@ while i >= 0:
     print(w[i], end = "")
 
     i -= 1
+
+print()
 
 
 
@@ -103,17 +107,7 @@ print(rev)
 
 
 
-# x). USING REDUCE
-
-r = "Micro-service"
-
-from functools import reduce
-
-print(reduce(lambda x, y: y + x, r))
-
-
-
-# xi). USING INSERT METHOD
+# x). USING INSERT METHOD
 
 m = "Hyperparameter"
 
@@ -126,7 +120,7 @@ print("".join(lst))
 
 
 
-# xii). LIST COMPREHENSION
+# xi). LIST COMPREHENSION
 
 n = "gautam"
 
@@ -134,10 +128,33 @@ print("".join([n[i] for i in range(len(n)-1, -1, -1)] ))
 
 
 
-# xiii). GENERATOR EXPRESSION
+# xii). GENERATOR EXPRESSION
 
 name = "extraordinary"
 print("".join(name[i] for i in range(len(name)-1, -1, -1)))
- 
+
+
+
+# xiii). REVERSE EACH WORD
+
+sentence = "Python data science"
+
+print(" ".join(word[::-1] for word in sentence.split()))
+
+
+
+# xiv). REVERSE WORD ORDER
+
+sentence = "Python data science"
+
+print(" ".join(sentence.split()[::-1]))
+
+
+
+# xv). REVERSE A LIST OF STRINGS
+
+words = ["python", "pandas", "numpy"]
+
+print([word[::-1] for word in words])
 
 
